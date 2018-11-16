@@ -1,0 +1,9 @@
+rules:
+  - id: com.example.akiko.php_redirect
+    pattern: 'header("Location:'
+    message: |
+      Be careful unsafe redirect and forward code. 
+      Unvalidated redirects and forwards are possible.
+      See: https://www.owasp.org/index.php/Unvalidated_Redirects_and_Forwards_Cheat_Sheet
+    glob: 
+      - "**/*.php"
