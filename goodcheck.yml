@@ -1,0 +1,126 @@
+rules:
+  - id: sider.php.code.php_redirect
+    pattern: 'header("Location:'
+    message: |
+      安全でないURLへリダイレクトしていないか確認して下さい！
+
+      また、リダイレクトの場合は、前後に文字列を出力してないか、リダイレクト後にはexitして処理を終了してい
+      るかも注意して下さい。
+      Unvalidated redirects and forwards are possible.
+      See: https://www.owasp.org/index.php/Unvalidated_Redirects_and_Forwards_Cheat_Sheet
+    glob: 
+      - "**/*.php"
+  - id: com.sider.not-actcat
+    pattern:
+      regexp: actcat
+      case_sensitive: false
+    message: |
+      Actcatという名称を使わないでください。
+
+      Actcat, Inc. は消滅しました。
+      現在の社名はSider, Inc.(Sider株式会社)です。
+    glob:
+      - "**/*.md"
+      - "**/*.php"
+      - "issues/*.txt"
+    fail:
+      - Actcat, Inc.
+      - actcat
+    pass:
+      - Sider, Inc.
+  - id: com.sider.not-sideci
+    pattern:
+      regexp: sideci
+      case_sensitive: false
+    message: |
+      SideCIという名称を使わないでください。
+
+      SideCI, Inc. は社名変更しました。
+      現在の社名はSider, Inc.(Sider株式会社)です。
+    glob:
+      - "**/*.md"
+      - "issues/*.txt"
+    fail:
+      - SideCI, Inc.
+      - sideci
+    pass:
+      - Sider, Inc.      
+  - id: com.sider.company-name
+    pattern:
+      regexp: 株式会社\s*Sider
+    message: |
+      Sider株式会社は後株です。前株ではありません。
+    glob:
+      - "**/*.md"
+      - "issues/*.txt"
+    fail:
+      - 株式会社Sider
+      - 株式会社 Sider
+    pass:
+      - Sider株式会社
+  - id: com.sider.case-sensitive
+    pattern:
+      regexp: \ssider\s
+      case_sensitive: true
+    message: Write Sider, not sider
+    glob:
+      - "**/*.md"
+      - "issues/*.txt"
+  - id: review.sider.typo.jetbrains
+    pattern: Jetbrains
+    message: |
+      "[typo] 'Jetbrains' → 'JetBrains'"
+
+      利用するIDEの名前も気をつけましょう。
+    fail: Jetbrains
+    pass: JetBrains
+    glob:
+      - "**/*.md"
+      - "issues/*.txt"
+  - id: io.Quay.case-sensitive
+    pattern:
+      regexp: QUAY
+      case_sensitive: true
+    message: Write Quay, not QUAY
+    glob:
+      - "**/*.md"
+      - "issues/*"
+  - id: sider.php.ini_check.display_error
+    pattern:
+      token: "display_errors="
+    message: |
+      production環境ではdisplay_errorsはOFFにしてください。代わりに log_errorsを有効にしてください。
+
+      Ref. https://www.owasp.org/index.php/PHP_Configuration_Cheat_Sheet
+    glob:
+      - "**/php.ini"
+  - id: sider.php.ini_check.file_uploads
+    pattern:
+      token: "file_uploads="
+    message: |
+      ファイルアップロードの機能を利用しない場合は、file_uploadsの設定はOFFにしてください。
+
+      Ref. https://www.owasp.org/index.php/PHP_Configuration_Cheat_Sheet
+    glob:
+      - "**/php.ini"
+  - id: sider.php.ini_check.session_name
+    pattern:
+      token: "session.name="
+    message: | 
+      デフォルトでは PHPSESSID となっています。予測し難い名前に変更しましょう。
+
+      Ref. https://www.owasp.org/index.php/PHP_Configuration_Cheat_Sheet
+    glob:
+      - "**/php.ini"
+  - id: sider.php.ini_check.expose_php
+    pattern:
+      token: "expose_php="
+    message: |
+      expose_php = Onの設定になっていないか確認してください。
+      
+      expose_php = Onの場合は、レスポンスヘッダにPHPのバージョンを付加します。
+      デフォルトでは有効になっていますが、必要でない情報は添えないようにしましょう。
+      Ref. https://www.owasp.org/index.php/PHP_Configuration_Cheat_Sheet
+    glob:
+      - "**/php.ini"
+

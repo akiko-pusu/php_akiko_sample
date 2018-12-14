@@ -1,0 +1,29 @@
+- id: sample.var_dump
+  pattern: var_dump(...)
+  message: Do not use var_dump.
+  justification: Allowed when debugging
+
+- id: sample.array
+  pattern: array(...)
+  message: 配列宣言で array(..) を使うのはやめましょう。 [] を使うこと
+
+- id: sample.in_array_without_3rd_param
+  pattern: in_array(_, _)
+  message: Specify 3rd parameter explicitly when calling in_array to avoid unexpected comparison results.
+  test:
+    fail:
+      - in_array(1, $arr)
+      - in_array(2, $arr)
+    pass:
+      - in_array(3, $arr, true)
+      - in_array(4, $arr, false)
+- id: sample.html_helper_image
+  pattern: ?->image(...)
+  message: |
+    CakePHPでは 画像挿入のヘルパーは、CDN対応のためカスタマイズしたヘルパーを利用してください。
+
+    Exp. $this->MyHTML->image(...)
+- id: sample.logging_check
+  pattern: "error_log(...)"
+  message: ログは本当に必要か確認してください。また、機微な情報をログに出力する際はマスキングか暗号化をしてください。
+
