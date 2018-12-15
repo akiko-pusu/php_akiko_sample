@@ -1,6 +1,8 @@
 rules:
   - id: sider.php.code.php_redirect
-    pattern: 'header("Location:'
+    pattern:
+      - 'header("Location:'
+      - "header('Location:"
     message: |
       安全でないURLへリダイレクトしていないか確認して下さい！
 
