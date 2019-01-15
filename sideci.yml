@@ -1,0 +1,5 @@
+linter:
+  goodcheck:
+    config: goodcheck.yml
+    target:
+      - target_directory
