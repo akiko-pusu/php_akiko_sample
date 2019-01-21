@@ -1,0 +1,6 @@
+linter:
+  code_sniffer:
+    dir: php_demo_sample/
+    standard: php_demo_sample/ruleset.xml
+    extensions: php,inc,lib
+    encoding: utf-8
