@@ -10,14 +10,14 @@ namespace PhpDemoSample;
  */
 class StyelCheck
 {
-  /** 
-   * Some comment here!
-   * 
-   * @return string Return message "Sample!"
-   */
-  public function sample()
-  {
-    // comment here! 
-    return response('Sample');
-  }
+    /**
+     * Some comment here!
+     *
+     * @return string Return message "Sample!"
+     */
+    public function sample()
+    {
+        // comment here!
+        return response('Sample');
+    }
 }
