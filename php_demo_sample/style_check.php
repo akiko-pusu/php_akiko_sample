@@ -1,4 +1,13 @@
 <?php
+namespace PhpDemoSample;
+
+/**
+ * StyelCheck model Doc Comment
+ *
+ * @category Class
+ * @package  MyPackage
+ * @author   Its Me <username@example.com>
+ */
 class StyelCheck
 {
   /** 
@@ -6,7 +15,7 @@ class StyelCheck
    * 
    * @return string Return message "Sample!"
    */
-  function sample()
+  public function sample()
   {
     // comment here! 
     return response('Sample');
