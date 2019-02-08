@@ -66,17 +66,6 @@ rules:
     glob:
       - "**/*.md"
       - "issues/*.txt"
-  - id: review.sider.typo.jetbrains
-    pattern: Jetbrains
-    message: |
-      "[typo] 'Jetbrains' → 'JetBrains'"
-
-      利用するIDEの名前も気をつけましょう。
-    fail: Jetbrains
-    pass: JetBrains
-    glob:
-      - "**/*.md"
-      - "issues/*.txt"
   - id: io.Quay.case-sensitive
     pattern:
       regexp: QUAY
